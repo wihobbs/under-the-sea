@@ -10,7 +10,8 @@ public class FishController : MonoBehaviour
     public bool grounded = false;
 
     public float verticalSensitivity = 0.2f;
-    
+    public float rotateIntensity = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,15 +23,10 @@ public class FishController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //grounded = col.OnCollisionEnter2D();
-        if (Input.GetKey("up"))
-        {
-            rb.AddForce(Vector2.up * verticalSensitivity, ForceMode2D.Impulse);
-        }
-        if (Input.GetKey("down"))
-        {
-            rb.AddForce(Vector2.down * verticalSensitivity, ForceMode2D.Impulse);
-        }
+        //Add Force up and down
+        rb.AddForce(new Vector2(0, Input.GetAxis("Vertical")) * verticalSensitivity, ForceMode2D.Impulse);
+        //Rotate fish up and down depending on vertical velocity
+        transform.eulerAngles = new Vector3(0, 0, rb.velocity.y * rotateIntensity);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -39,10 +35,5 @@ public class FishController : MonoBehaviour
         {
             print("you died");
         }
-    }
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        grounded = false;
-        sr.color = new Color(1, 0.3f, 0.3f);
     }
 }
