@@ -243,7 +243,7 @@ MonoBehaviour:
   col: {fileID: 0}
   sr: {fileID: 0}
   grounded: 0
-  verticalSensitivity: 0.1
+  verticalSensitivity: 0.2
   rotateIntensity: 2.5
 --- !u!4 &449405653
 Transform:
@@ -254,7 +254,7 @@ Transform:
   m_GameObject: {fileID: 449405651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -351,9 +351,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
-  m_GravityScale: -2
+  m_GravityScale: -2.2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

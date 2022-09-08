@@ -24,7 +24,7 @@ public class FishController : MonoBehaviour
     void Update()
     {
         //Add Force up and down
-        rb.AddForce(new Vector2(0, Input.GetAxis("Vertical")) * verticalSensitivity, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(0, Input.GetAxis("Vertical") * verticalSensitivity), ForceMode2D.Impulse);
         //Rotate fish up and down depending on vertical velocity
         transform.eulerAngles = new Vector3(0, 0, rb.velocity.y * rotateIntensity);
     }
