@@ -7,6 +7,7 @@ public class FishController : MonoBehaviour
     public Rigidbody2D rb;
     public BoxCollider2D col;
     public SpriteRenderer sr;
+    public Animator anim;
     public bool grounded = false;
 
     public float verticalSensitivity = 0.2f;
@@ -25,6 +26,10 @@ public class FishController : MonoBehaviour
     {
         //Add Force up and down
         rb.AddForce(new Vector2(0, Input.GetAxis("Vertical") * verticalSensitivity), ForceMode2D.Impulse);
+
+        
+        anim.SetBool("swimming", Input.GetAxis("Vertical") != 0);
+        
         //Rotate fish up and down depending on vertical velocity
         transform.eulerAngles = new Vector3(0, 0, rb.velocity.y * rotateIntensity);
     }
