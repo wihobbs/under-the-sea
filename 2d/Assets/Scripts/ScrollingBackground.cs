@@ -18,7 +18,8 @@ public struct ScrollingBackgroundElement {
 public class ScrollingBackground : MonoBehaviour
 {
     [Range(0, 1)]
-    public float scrollprogress = 0;
+    public float scrollProgress = 0;
+    public float progressionrate = 1;
     public ScrollingBackgroundElement[] elementArray;
     public SpriteRenderer spriteTemplate;
 
@@ -45,7 +46,9 @@ public class ScrollingBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Application.isPlaying)
+            scrollProgress += Time.deltaTime * progressionrate;
+        scrollProgress %= 1;
 
-        
     }
 }
