@@ -39,6 +39,7 @@ public class FishController : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             print("you died");
+            // Here could call a final screen
         }
     }
 }
