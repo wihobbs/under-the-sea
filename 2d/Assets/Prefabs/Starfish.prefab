@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7684889688426736024}
   - component: {fileID: 7684889688426736031}
   - component: {fileID: 7684889688426736030}
-  - component: {fileID: 7684889688426736025}
+  - component: {fileID: 6693077018086599507}
   m_Layer: 0
   m_Name: Starfish
   m_TagString: enemy
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7684889688426736029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.46, y: -0, z: -0.045895386}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
---- !u!114 &7684889688426736025
+--- !u!114 &6693077018086599507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7684889688426736029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee0831bb3b72c40899ebbb12d71eedee, type: 3}
+  m_Script: {fileID: 11500000, guid: df145a1a1b3a04855a437f3b55254d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 2.5
   timeDestroy: 100

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3898405349545315588}
   - component: {fileID: 3898405349545315589}
-  - component: {fileID: 3898405349545315591}
+  - component: {fileID: 5068831292721763467}
   - component: {fileID: 3898405349545315590}
   m_Layer: 0
   m_Name: Treasure
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3898405349545315594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.52, y: -2.67, z: -0.03280224}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3898405349545315591
+--- !u!114 &5068831292721763467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,11 +95,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3898405349545315594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c03049b5d2e5f484da5887ec475d157f, type: 3}
+  m_Script: {fileID: 11500000, guid: df145a1a1b3a04855a437f3b55254d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
-  timeDestroy: 100
+  speed: 1.7
+  timeDestroy: 50
 --- !u!61 &3898405349545315590
 BoxCollider2D:
   m_ObjectHideFlags: 0

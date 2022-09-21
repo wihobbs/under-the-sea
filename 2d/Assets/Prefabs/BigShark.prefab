@@ -142,8 +142,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8572667876253157978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df145a1a1b3a04855a437f3b55254d48, type: 3}
+  m_Script: {fileID: 11500000, guid: 66fc4a805478cd848ae27edef12844da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  timeDestroy: 100
+  timeDestroy: 50
+  destroyPosition: -10
