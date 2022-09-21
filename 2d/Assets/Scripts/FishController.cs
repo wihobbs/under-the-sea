@@ -57,9 +57,18 @@ public class FishController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         switch(collision.gameObject.tag) {
-            case "Wall":
-                print("you died");
+            case "treasure":
+                score += 100;
+                source.clip = treasureSound;
+                source.Play();
+                Destroy(collision.gameObject);
+                Debug.Log("treasure!");
                 break;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        switch(collision.gameObject.tag) {
             case "1000ptEnemy":
                 score -= 1000;
                 break;
@@ -68,13 +77,6 @@ public class FishController : MonoBehaviour
                 break;
             case "10ptEnemy":
                 score -= 10;
-                break;
-            case "treasure":
-                score += 100;
-                source.clip = treasureSound;
-                source.Play();
-                Destroy(collision.gameObject);
-                Debug.Log("treasure!");
                 break;
         }
     }

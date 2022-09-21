@@ -97,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 8572667876253157978}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 11cc3a296e65e42489ad0ffb4fa9bdb2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -148,3 +148,4 @@ MonoBehaviour:
   speed: 1.5
   timeDestroy: 50
   destroyPosition: -10
+  singleton: {fileID: 0}
