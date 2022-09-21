@@ -43,7 +43,7 @@ public class FishController : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         switch(collision.gameObject.tag) {
             case "Wall":
@@ -57,6 +57,12 @@ public class FishController : MonoBehaviour
                 break;
             case "10ptEnemy":
                 score -= 10;
+                break;
+            case "treasure":
+                score += 100;
+                collision.gameObject.GetComponent<AudioSource>().Play();
+                Destroy(collision.gameObject);
+                Debug.Log("treasure!");
                 break;
         }
     }

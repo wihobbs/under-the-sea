@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 449405656}
   m_Layer: 0
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1066,16 +1066,11 @@ MonoBehaviour:
   topLocation: 4.5
   bottomLocation: -4.5
   SpawnableObjects:
-  - {fileID: 6353747366842974493, guid: 74387322375ed4d489346bfd81854c69, type: 3}
-  - {fileID: 6446077348353892930, guid: d5144f55899fd4864b90bc9e94de4c9b, type: 3}
-  - {fileID: 7684889688426736029, guid: 6c219810e114d4aaf958a1c1a2be9f24, type: 3}
-  - {fileID: 8572667876253157978, guid: 600624d632df540efa9de8fd1e06d300, type: 3}
   - {fileID: 3898405349545315594, guid: 5753619eba0a04bdc8fe82523b08eca2, type: 3}
-  PinkJellyfish: {fileID: 6353747366842974493, guid: 74387322375ed4d489346bfd81854c69, type: 3}
-  GreenJellyfish: {fileID: 6446077348353892930, guid: d5144f55899fd4864b90bc9e94de4c9b, type: 3}
-  Starfish: {fileID: 7684889688426736029, guid: 6c219810e114d4aaf958a1c1a2be9f24, type: 3}
-  BigShark: {fileID: 8572667876253157978, guid: 600624d632df540efa9de8fd1e06d300, type: 3}
-  Treasure: {fileID: 3898405349545315594, guid: 5753619eba0a04bdc8fe82523b08eca2, type: 3}
+  - {fileID: 3898405349545315594, guid: 5753619eba0a04bdc8fe82523b08eca2, type: 3}
+  - {fileID: 3898405349545315594, guid: 5753619eba0a04bdc8fe82523b08eca2, type: 3}
+  - {fileID: 3898405349545315594, guid: 5753619eba0a04bdc8fe82523b08eca2, type: 3}
+  - {fileID: 3898405349545315594, guid: 5753619eba0a04bdc8fe82523b08eca2, type: 3}
 --- !u!1 &1589201902
 GameObject:
   m_ObjectHideFlags: 0
