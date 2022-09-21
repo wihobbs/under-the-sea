@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7684889688426736025}
   m_Layer: 0
   m_Name: Starfish
-  m_TagString: enemy
+  m_TagString: 100ptEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

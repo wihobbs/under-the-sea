@@ -1535,6 +1535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigShark
       objectReference: {fileID: 0}
+    - target: {fileID: 8572667876253157978, guid: 600624d632df540efa9de8fd1e06d300, type: 3}
+      propertyPath: m_TagString
+      value: 1000ptEnemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8572667876253157981, guid: 600624d632df540efa9de8fd1e06d300, type: 3}
       propertyPath: m_RootOrder
       value: 6
