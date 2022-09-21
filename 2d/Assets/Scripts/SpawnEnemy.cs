@@ -34,9 +34,9 @@ public class SpawnEnemy : MonoBehaviour
         }
         currSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         Vector3 location = Vector3.zero;
-        location.x = -10;
+        location.x = 10;
         bottomLocation = -10;
-        topLocation = -10;
+        topLocation = 10;
         location.y = Random.Range(bottomLocation, topLocation);
         // pick a random enemy and a random y-coordinate
         GameObject newObj;

@@ -16,6 +16,6 @@ public class TextUpdate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        m_Text.text = "Score: " + GameObject.Find("PlayerController").GetComponent<FishController>().score;
     }
 }
