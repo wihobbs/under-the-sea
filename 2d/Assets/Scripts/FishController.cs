@@ -36,7 +36,7 @@ public class FishController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "enemy")
         {
             print("you died");
             // Here could call a final screen
