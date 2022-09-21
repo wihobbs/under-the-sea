@@ -6,7 +6,7 @@ public class SharkMove : MonoBehaviour
 {
     public float speed = 1.5f;
     // Might be good to have varying speeds based on the sprite
-    public float timeDestroy = 2.0f;
+    public float timeDestroy = 50.0f;
 
     // Start is called before the first frame update
     void Start()

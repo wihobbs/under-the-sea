@@ -1011,6 +1011,7 @@ GameObject:
   - component: {fileID: 1484893595}
   - component: {fileID: 1484893596}
   - component: {fileID: 1484893597}
+  - component: {fileID: 1484893598}
   m_Layer: 0
   m_Name: Singleton
   m_TagString: Untagged
@@ -1069,6 +1070,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a060b152c60d4dbc825d0303feaac1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1484893598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484893594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c310f1e2dd941b08570d0874e88226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomSeed: 100
+  minSpawnTime: 0.1
+  maxSpawnTime: 1.5
+  topLocation: 0
+  bottomLocation: 0
+  PinkJellyfish: {fileID: 6353747366842974493, guid: 74387322375ed4d489346bfd81854c69, type: 3}
+  GreenJellyfish: {fileID: 6446077348353892930, guid: d5144f55899fd4864b90bc9e94de4c9b, type: 3}
+  Starfish: {fileID: 7684889688426736029, guid: 6c219810e114d4aaf958a1c1a2be9f24, type: 3}
+  BigShark: {fileID: 8572667876253157978, guid: 600624d632df540efa9de8fd1e06d300, type: 3}
+  Treasure: {fileID: 3898405349545315594, guid: 5753619eba0a04bdc8fe82523b08eca2, type: 3}
 --- !u!1001 &96856680473693655
 PrefabInstance:
   m_ObjectHideFlags: 0
