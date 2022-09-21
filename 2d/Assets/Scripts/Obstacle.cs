@@ -8,17 +8,18 @@ public class Obstacle : MonoBehaviour
     // Might be good to have varying speeds based on the sprite
     public float timeDestroy = 50.0f;
     public float destroyPosition = -10;
+    public SpawnEnemy singleton;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        singleton = GameObject.Find("Singleton").GetComponent<SpawnEnemy>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * speed * -1 * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * singleton.progressionRate * -1 * Time.deltaTime);
 
         if (transform.position.x <= destroyPosition){
              Destroy(gameObject);

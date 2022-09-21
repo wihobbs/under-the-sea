@@ -10,17 +10,25 @@ public class FishController : MonoBehaviour
     public Animator anim;
     public bool grounded = false;
 
+    public AudioClip treasureSound;
+    AudioSource source;
+
     public float verticalSensitivity = 0.2f;
     public float rotateIntensity = 10f;
 
-    public int score = 0;
+    public float score = 0;
+    public float scoreIncreaseRate = 10;
     private float timer = 0.0f;
+    public SpawnEnemy singleton;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
+        source = GetComponent<AudioSource>();
+        singleton = GameObject.Find("Singleton").GetComponent<SpawnEnemy>();
     }
 
     // Update is called once per frame
@@ -32,6 +40,9 @@ public class FishController : MonoBehaviour
             score += 1;
             print(score);
         }
+
+        score += Time.deltaTime * singleton.progressionRate * scoreIncreaseRate;
+
         //Add Force up and down
         rb.AddForce(new Vector2(0, Input.GetAxis("Vertical") * verticalSensitivity), ForceMode2D.Impulse);
 
@@ -60,7 +71,8 @@ public class FishController : MonoBehaviour
                 break;
             case "treasure":
                 score += 100;
-                collision.gameObject.GetComponent<AudioSource>().Play();
+                source.clip = treasureSound;
+                source.Play();
                 Destroy(collision.gameObject);
                 Debug.Log("treasure!");
                 break;

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextUpdate : MonoBehaviour
+public class TextUpdate1 : MonoBehaviour
 {
     Text m_Text;
-    public Font m_Font;
+    public float time;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +16,7 @@ public class TextUpdate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_Text.text = ((int)GameObject.Find("PlayerController").GetComponent<FishController>().score).ToString();
+        time += Time.deltaTime;
+        m_Text.text = ((int)time).ToString();
     }
 }
