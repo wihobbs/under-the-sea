@@ -45,15 +45,19 @@ public class FishController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "enemy")
-        {
-            print("you died");
-            // Here could call a final screen
-        }
-        if (collision.gameObject.tag == "treasure") 
-        {
-            score += 1000;
-            print(score);
+        switch(collision.gameObject.tag) {
+            case "Wall":
+                print("you died");
+                break;
+            case "1000ptEnemy":
+                score -= 1000;
+                break;
+            case "100ptEnemy":
+                score -= 100;
+                break;
+            case "10ptEnemy":
+                score -= 10;
+                break;
         }
     }
 }

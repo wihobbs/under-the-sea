@@ -8,6 +8,9 @@ TagManager:
   - Wall
   - enemy
   - treasure
+  - 10ptEnemy
+  - 100ptEnemy
+  - 1000ptEnemy
   layers:
   - Default
   - TransparentFX
