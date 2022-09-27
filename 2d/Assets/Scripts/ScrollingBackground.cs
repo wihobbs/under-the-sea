@@ -14,7 +14,7 @@ public struct ScrollingBackgroundElement {
     public Color tint;
 }
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class ScrollingBackground : MonoBehaviour
 {
     [Range(0, 1)]
@@ -23,6 +23,12 @@ public class ScrollingBackground : MonoBehaviour
     public ScrollingBackgroundElement[] elementArray;
     public SpriteRenderer spriteTemplate;
 
+
+    [Header("Background")]
+    public int rows = 10;
+    public int columns = 16;
+    public float tileSize = 1;
+    public GameObject tile;
     
     // Start is called before the first frame update
     void Start()
@@ -33,14 +39,16 @@ public class ScrollingBackground : MonoBehaviour
 
             for (int j = 0; j < elementArray[i].count; j++)
             {
-                SpriteRenderer tmpIndividualPiece = GameObject.Instantiate(spriteTemplate,
-                    elementArray[i].position + j * elementArray[i].scrollingOffset,
-                    elementArray[i].rotation) as SpriteRenderer;
+                //SpriteRenderer tmpIndividualPiece = GameObject.Instantiate(spriteTemplate,
+                   // elementArray[i].position + j * elementArray[i].scrollingOffset,
+                   // elementArray[i].rotation) as SpriteRenderer;
                 //tmpIndividualPiece.GetComponent<SpriteRenderer>().color = elementArray[i].tint;
                 //tmpIndividualPiece.GetComponent<SpriteRenderer>().sprite = elementArray[i].sourceImage;
                 //tmpIndividualPiece.transform.localScale = elementArray[i].scale;
             }
         }
+        
+        GenerateGrid();
     }
 
     // Update is called once per frame
@@ -50,5 +58,21 @@ public class ScrollingBackground : MonoBehaviour
             scrollProgress += Time.deltaTime * progressionrate;
         scrollProgress %= 1;
 
+    }
+
+    private void GenerateGrid()
+    {
+        GameObject referenceTile = (GameObject)Instantiate(tile);
+
+        for (int i = 0; i < rows; i++){
+            for (int j = 0; j < columns; j++){
+                GameObject tile = GameObject.Instantiate(referenceTile, transform);
+                tile.transform.position = new Vector2(j * tileSize, i * -tileSize);
+            }
+        }
+
+        Destroy(referenceTile);
+
+        transform.position = new Vector2(-(columns * tileSize) / 2 + tileSize / 2, (rows * tileSize) / 2 - tileSize / 2);
     }
 }

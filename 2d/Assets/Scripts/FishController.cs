@@ -11,6 +11,7 @@ public class FishController : MonoBehaviour
     public bool grounded = false;
 
     public AudioClip treasureSound;
+    public AudioClip zapSound;
     AudioSource source;
 
     public float verticalSensitivity = 0.2f;
@@ -58,11 +59,19 @@ public class FishController : MonoBehaviour
     {
         switch(collision.gameObject.tag) {
             case "treasure":
-                score += 100;
-                source.clip = treasureSound;
+                score += 500;
+                source.clip = treasureSound;    
                 source.Play();
                 Destroy(collision.gameObject);
                 Debug.Log("treasure!");
+                break;
+            case "pinkJellyfish":
+                score -= 500;
+                source.clip = zapSound;    
+                source.Play();
+                singleton.progressionRate *= 0.75f;
+                Destroy(collision.gameObject);
+                Debug.Log("zapped!");
                 break;
         }
     }

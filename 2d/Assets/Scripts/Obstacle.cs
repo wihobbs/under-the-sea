@@ -9,6 +9,8 @@ public class Obstacle : MonoBehaviour
     public float timeDestroy = 50.0f;
     public float destroyPosition = -10;
     public SpawnEnemy singleton;
+    public bool loop = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,12 @@ public class Obstacle : MonoBehaviour
         transform.Translate(Vector3.right * speed * singleton.progressionRate * -1 * Time.deltaTime);
 
         if (transform.position.x <= destroyPosition){
-             Destroy(gameObject);
+            if (!loop){
+                Destroy(gameObject);
+            }
+            else{
+                transform.position += new Vector3(20, 0, 0);
+            }
         }
     }
 }
