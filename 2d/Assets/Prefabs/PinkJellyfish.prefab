@@ -150,3 +150,5 @@ MonoBehaviour:
   destroyPosition: -10
   singleton: {fileID: 0}
   loop: 0
+  hit: 0
+  spawnProbability: 0.7

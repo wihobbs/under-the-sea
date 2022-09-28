@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    public int randomSeed = 100;
+    public float randomSeed = 100;
+    public float randomSeed2 = 100;
+    public float location = 100;
     public float minSpawnTime = 0.1f;
     public float maxSpawnTime = 1.5f;
 
@@ -38,12 +40,14 @@ public class SpawnEnemy : MonoBehaviour
             return;
         }
         currSpawnTime = Random.Range(minSpawnTime / singleton.progressionRate, maxSpawnTime / singleton.progressionRate);
-        Vector3 location = Vector3.zero;
-        location.x = 10;
-        location.y = Random.Range(bottomLocation, topLocation);
         // pick a random enemy and a random y-coordinate
         //GameObject newObj;
-        Instantiate(SpawnableObjects[Random.Range(0, SpawnableObjects.Length)], new Vector2(10, Random.Range(bottomLocation, topLocation)), Quaternion.identity);
+        //Random.seed = (int)Random.Range(0, (int)Time.time);
+        randomSeed = Random.Range(0, 100);
+        randomSeed2 = Time.time;
+        location = randomSeed;
+        Debug.Log("location: " + location);
+        Instantiate(SpawnableObjects[Random.Range(0, SpawnableObjects.Length)], new Vector2(10, location), Quaternion.identity);
         
     }
 }

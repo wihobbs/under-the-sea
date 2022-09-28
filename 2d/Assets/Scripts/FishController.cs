@@ -9,6 +9,7 @@ public class FishController : MonoBehaviour
     public SpriteRenderer sr;
     public Animator anim;
     public bool grounded = false;
+    public int health = 10;
 
     public AudioClip treasureSound;
     public AudioClip zapSound;
@@ -30,6 +31,8 @@ public class FishController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         source = GetComponent<AudioSource>();
         singleton = GameObject.Find("Singleton").GetComponent<SpawnEnemy>();
+
+        health = 10;
     }
 
     // Update is called once per frame
@@ -62,17 +65,11 @@ public class FishController : MonoBehaviour
                 score += 500;
                 source.clip = treasureSound;    
                 source.Play();
+                singleton.progressionRate *= 1.1f;
                 Destroy(collision.gameObject);
                 Debug.Log("treasure!");
                 break;
-            case "pinkJellyfish":
-                score -= 500;
-                source.clip = zapSound;    
-                source.Play();
-                singleton.progressionRate *= 0.75f;
-                Destroy(collision.gameObject);
-                Debug.Log("zapped!");
-                break;
+            
         }
     }
 
@@ -80,12 +77,21 @@ public class FishController : MonoBehaviour
         switch(collision.gameObject.tag) {
             case "1000ptEnemy":
                 score -= 1000;
+                health -= 2;
                 break;
             case "100ptEnemy":
                 score -= 100;
                 break;
             case "10ptEnemy":
                 score -= 10;
+                break;
+            case "pinkJellyfish":
+                score -= 500;
+                health -= 1;
+                source.clip = zapSound;    
+                source.Play();
+                singleton.progressionRate *= 0.75f;
+                Debug.Log("zapped!");
                 break;
         }
     }

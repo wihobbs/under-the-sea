@@ -68,6 +68,11 @@ public class ScrollingBackground : MonoBehaviour
             for (int j = 0; j < columns; j++){
                 GameObject tile = GameObject.Instantiate(referenceTile, transform);
                 tile.transform.position = new Vector2(j * tileSize, i * -tileSize);
+                Color spawnColor = new Color(
+                    -0.6f * ((float)i / rows) + 0.9f,
+                    -0.7f * ((float)i / rows) + 1f,
+                    -0.6f * ((float)i / rows) + 0.9f);
+                tile.GetComponent<SpriteRenderer>().color = spawnColor;
             }
         }
 
