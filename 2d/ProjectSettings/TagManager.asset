@@ -13,6 +13,7 @@ TagManager:
   - 1000ptEnemy
   - pinkJellyfish
   - greenJellyfish
+  - starfish
   layers:
   - Default
   - TransparentFX

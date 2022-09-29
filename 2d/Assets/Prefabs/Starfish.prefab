@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6693077018086599507}
   m_Layer: 0
   m_Name: Starfish
-  m_TagString: 100ptEnemy
+  m_TagString: starfish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.3
+  randomSpeed: 0
+  speedRange: {x: 1, y: 2}
   spawnProbability: 0.4
   destroyPosition: -10
   loop: 0

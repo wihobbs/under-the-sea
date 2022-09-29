@@ -8,10 +8,13 @@ public class UIManager : MonoBehaviour
     public Text scoreText;
     public Text timeText;
     float time;
+    public Canvas followCanvas;
 
-    public FishController controller;
+    FishController controller;
 
     public Image[] hearts;
+    public float canvasFollowLerpVal = 5f;
+    public Camera cam;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,10 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < hearts.Length; i++){
             hearts[i].fillAmount = Mathf.Clamp(controller.health * 0.5f - i, 0f, 1f);
         }
+
+        //screenPos = cam.WorldToScreenPoint(controller.transform.position);
+        followCanvas.transform.position = Vector3.Lerp(followCanvas.transform.position, controller.transform.position, Time.deltaTime * canvasFollowLerpVal);
+        followCanvas.transform.eulerAngles = Vector3.zero;
     }
 
     string timeFormat(float temp)

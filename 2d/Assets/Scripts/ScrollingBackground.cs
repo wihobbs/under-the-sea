@@ -30,7 +30,7 @@ public class ScrollingBackground : MonoBehaviour
     public float tileSize = 1;
     public GameObject tile;
     public Color tint;
-    
+    public bool noSpeedAlphaAdjustment = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,17 +64,19 @@ public class ScrollingBackground : MonoBehaviour
     private void GenerateGrid()
     {
         GameObject referenceTile = (GameObject)Instantiate(tile);
+        
 
         for (int i = 0; i < rows; i++){
             for (int j = 0; j < columns; j++){
                 GameObject tile = GameObject.Instantiate(referenceTile, transform);
                 tile.transform.position = new Vector2(j * tileSize, i * -tileSize);
+                Obstacle t = tile.GetComponent<Obstacle>();
                 Color spawnColor = new Vector4(
                     -0.6f * ((float)i / rows) + 0.9f,
                     -0.7f * ((float)i / rows) + 1f,
                     -0.6f * ((float)i / rows) + 0.9f,
-                    tile.GetComponent<Obstacle>().randomSpeed ?
-                        0.5f + 0.5f * (tile.GetComponent<Obstacle>().speed - tile.GetComponent<Obstacle>().speedRange.x) / (tile.GetComponent<Obstacle>().speedRange.y - tile.GetComponent<Obstacle>().speedRange.x) :
+                    (t.randomSpeed && !noSpeedAlphaAdjustment) ?
+                        0.5f + 0.5f * (t.speed - t.speedRange.x) / (t.speedRange.y - t.speedRange.x) :
                         1f) * tint;
                 tile.GetComponent<SpriteRenderer>().color = spawnColor;
             }

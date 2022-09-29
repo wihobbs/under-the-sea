@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7425381838594383647}
   - component: {fileID: 7425381838594383644}
   m_Layer: 0
-  m_Name: OceanTile_M
+  m_Name: OceanCaustics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7425381838594383645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.08715578, w: 0.9961947}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 6, y: 12, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10}
 --- !u!212 &7425381838594383647
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
-  m_Sprite: {fileID: 21300000, guid: 4f806198bac6d35488964a1a26174318, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: -2
+  m_Sprite: {fileID: 21300000, guid: 012917d7f5943e640817f417927b8ca0, type: 3}
+  m_Color: {r: 0.44716978, g: 0.9698318, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,12 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fc4a805478cd848ae27edef12844da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
+  speed: 0.1
   randomSpeed: 1
-  speedRange: {x: 0.1, y: 0.5}
+  speedRange: {x: 0.1, y: 3}
   spawnProbability: 1
   destroyPosition: -10
   loop: 1
   hit: 0
-  randomRotate: 1
-  rotateSpeedMax: 20
+  randomRotate: 0
+  rotateSpeedMax: 0

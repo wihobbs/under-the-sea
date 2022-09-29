@@ -84,7 +84,7 @@ public class FishController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-        if (!collision.gameObject.GetComponent<Obstacle>().hit){
+        //if (!collision.gameObject.GetComponent<Obstacle>().hit){
             switch(collision.gameObject.tag) {
                 case "1000ptEnemy":
                     score -= 1000;
@@ -96,16 +96,20 @@ public class FishController : MonoBehaviour
                 case "10ptEnemy":
                     score -= 10;
                     break;
+                case "starfish":
+                    score -= 10;
+                    singleton.progressionRate *= 0.75f;
+                    break;
                 case "pinkJellyfish":
                     score -= 500;
                     health -= 1;
                     source.clip = zapSound;    
                     source.Play();
-                    singleton.progressionRate *= 0.75f;
+                    singleton.progressionRate *= 0.9f;
                     Debug.Log("zapped!");
                     break;
             }
-        }
+        //}
         
     }
 }
