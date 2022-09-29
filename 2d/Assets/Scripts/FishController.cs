@@ -13,6 +13,7 @@ public class FishController : MonoBehaviour
 
     public AudioClip treasureSound;
     public AudioClip zapSound;
+    public AudioClip healthSound;
     AudioSource source;
 
     public float verticalSensitivity = 0.2f;
@@ -60,39 +61,51 @@ public class FishController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        switch(collision.gameObject.tag) {
-            case "treasure":
-                score += 500;
-                source.clip = treasureSound;    
-                source.Play();
-                singleton.progressionRate *= 1.1f;
-                Destroy(collision.gameObject);
-                Debug.Log("treasure!");
-                break;
-            
+        if (!collision.gameObject.GetComponent<Obstacle>().hit){
+            switch(collision.gameObject.tag) {
+                case "treasure":
+                    score += 500;
+                    source.clip = treasureSound;    
+                    source.Play();
+                    singleton.progressionRate *= 1.1f;
+                    Destroy(collision.gameObject);
+                    Debug.Log("treasure!");
+                    break;
+                case "greenJellyfish":
+                    health = (health == 10) ? 10 : health + 1;
+                    source.clip = healthSound;    
+                    source.Play();
+                    Destroy(collision.gameObject);
+                    Debug.Log("health!");
+                    break;
+            }
         }
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-        switch(collision.gameObject.tag) {
-            case "1000ptEnemy":
-                score -= 1000;
-                health -= 2;
-                break;
-            case "100ptEnemy":
-                score -= 100;
-                break;
-            case "10ptEnemy":
-                score -= 10;
-                break;
-            case "pinkJellyfish":
-                score -= 500;
-                health -= 1;
-                source.clip = zapSound;    
-                source.Play();
-                singleton.progressionRate *= 0.75f;
-                Debug.Log("zapped!");
-                break;
+        if (!collision.gameObject.GetComponent<Obstacle>().hit){
+            switch(collision.gameObject.tag) {
+                case "1000ptEnemy":
+                    score -= 1000;
+                    health -= 2;
+                    break;
+                case "100ptEnemy":
+                    score -= 100;
+                    break;
+                case "10ptEnemy":
+                    score -= 10;
+                    break;
+                case "pinkJellyfish":
+                    score -= 500;
+                    health -= 1;
+                    source.clip = zapSound;    
+                    source.Play();
+                    singleton.progressionRate *= 0.75f;
+                    Debug.Log("zapped!");
+                    break;
+            }
         }
+        
     }
 }

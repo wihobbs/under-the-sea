@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    public float randomSeed = 100;
+    public int randomSeed = 100;
     public float randomSeed2 = 100;
     public float location = 100;
     public float minSpawnTime = 0.1f;
@@ -16,11 +16,11 @@ public class SpawnEnemy : MonoBehaviour
 
     public float progressionRate;
     public float progressionRateAccel = 0.05f;
-    public SpawnEnemy singleton;
+    SpawnEnemy singleton;
 
 
 
-    float currSpawnTime;
+    public float currSpawnTime;
     // five seconds at varying intervals given that there are multiple types of enemies
     // Start is called before the first frame update
     void Start()
@@ -35,19 +35,23 @@ public class SpawnEnemy : MonoBehaviour
     void Update()
     {
         progressionRate += Time.deltaTime * progressionRateAccel;
+
+        randomSeed = (int)currSpawnTime * 100;
+
+        //Random.seed = randomSeed;
+
+        location = Random.Range(bottomLocation, topLocation) + currSpawnTime * 2.5f;
+
         if(currSpawnTime >= 0.0f) {
             currSpawnTime -= Time.deltaTime;
             return;
         }
-        currSpawnTime = Random.Range(minSpawnTime / singleton.progressionRate, maxSpawnTime / singleton.progressionRate);
+        currSpawnTime = Random.Range(minSpawnTime / Mathf.Pow(singleton.progressionRate, 1.5f), maxSpawnTime / Mathf.Pow(singleton.progressionRate, 1.5f));
         // pick a random enemy and a random y-coordinate
         //GameObject newObj;
         //Random.seed = (int)Random.Range(0, (int)Time.time);
-        randomSeed = Random.Range(0, 100);
-        randomSeed2 = Time.time;
-        location = randomSeed;
-        Debug.Log("location: " + location);
+ 
+        //Debug.Log("location: " + location);
         Instantiate(SpawnableObjects[Random.Range(0, SpawnableObjects.Length)], new Vector2(10, location), Quaternion.identity);
-        
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - 100ptEnemy
   - 1000ptEnemy
   - pinkJellyfish
+  - greenJellyfish
   layers:
   - Default
   - TransparentFX

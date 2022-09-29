@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7425381838594383647}
   - component: {fileID: 7425381838594383644}
   m_Layer: 0
-  m_Name: OceanTile
+  m_Name: OceanTile_S
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7425381838594383645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: eccd5ae1d3fed40d89ba3e980a82efe6, type: 3}
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4f806198bac6d35488964a1a26174318, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.30327845, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,10 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fc4a805478cd848ae27edef12844da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
-  timeDestroy: 50
+  speed: 0.3
+  randomSpeed: 1
+  speedRange: {x: 0.4, y: 1}
+  spawnProbability: 1
   destroyPosition: -10
-  singleton: {fileID: 0}
   loop: 1
   hit: 0
-  destroyProbability: 1
+  randomRotate: 1
+  rotateSpeedMax: 20

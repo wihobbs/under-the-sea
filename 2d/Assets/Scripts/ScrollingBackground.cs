@@ -29,6 +29,7 @@ public class ScrollingBackground : MonoBehaviour
     public int columns = 16;
     public float tileSize = 1;
     public GameObject tile;
+    public Color tint;
     
     // Start is called before the first frame update
     void Start()
@@ -68,10 +69,13 @@ public class ScrollingBackground : MonoBehaviour
             for (int j = 0; j < columns; j++){
                 GameObject tile = GameObject.Instantiate(referenceTile, transform);
                 tile.transform.position = new Vector2(j * tileSize, i * -tileSize);
-                Color spawnColor = new Color(
+                Color spawnColor = new Vector4(
                     -0.6f * ((float)i / rows) + 0.9f,
                     -0.7f * ((float)i / rows) + 1f,
-                    -0.6f * ((float)i / rows) + 0.9f);
+                    -0.6f * ((float)i / rows) + 0.9f,
+                    tile.GetComponent<Obstacle>().randomSpeed ?
+                        0.5f + 0.5f * (tile.GetComponent<Obstacle>().speed - tile.GetComponent<Obstacle>().speedRange.x) / (tile.GetComponent<Obstacle>().speedRange.y - tile.GetComponent<Obstacle>().speedRange.x) :
+                        1f) * tint;
                 tile.GetComponent<SpriteRenderer>().color = spawnColor;
             }
         }

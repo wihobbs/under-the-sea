@@ -99,12 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.3
-  timeDestroy: 50
+  spawnProbability: 0.3
   destroyPosition: -10
-  singleton: {fileID: 0}
   loop: 0
   hit: 0
-  spawnProbability: 0.3
+  randomRotate: 0
+  rotateSpeedMax: 0
 --- !u!58 &5600426001143790735
 CircleCollider2D:
   m_ObjectHideFlags: 0
