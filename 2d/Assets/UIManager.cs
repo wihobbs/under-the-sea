@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -45,5 +47,11 @@ public class UIManager : MonoBehaviour
         int s = (int)temp - m * 60;
         int ms = (int)(1000 * (temp - m * 60 - s));
         return string.Format("{0:00}:{1:00}:{2:000}", m, s, ms);
+    }
+
+    public void LoadLevel(string scenename)
+    {
+        Debug.Log("sceneName to load: " + scenename);
+        SceneManager.LoadScene(scenename);
     }
 }

@@ -17,6 +17,7 @@ public class SpawnEnemy : MonoBehaviour
     public float progressionRate;
     public float progressionRateAccel = 0.05f;
     SpawnEnemy singleton;
+    public bool spawnEnemies = true;
 
 
 
@@ -52,6 +53,7 @@ public class SpawnEnemy : MonoBehaviour
         //Random.seed = (int)Random.Range(0, (int)Time.time);
  
         //Debug.Log("location: " + location);
-        Instantiate(SpawnableObjects[Random.Range(0, SpawnableObjects.Length)], new Vector2(10, location), Quaternion.identity);
+        if (spawnEnemies)
+            Instantiate(SpawnableObjects[Random.Range(0, SpawnableObjects.Length)], new Vector2(10, location), Quaternion.identity);
     }
 }

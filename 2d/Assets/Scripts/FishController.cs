@@ -23,6 +23,7 @@ public class FishController : MonoBehaviour
     public float scoreIncreaseRate = 10;
     private float timer = 0.0f;
     public SpawnEnemy singleton;
+    public GameObject deathCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +58,13 @@ public class FishController : MonoBehaviour
         //Rotate fish up and down depending on vertical velocity
         transform.eulerAngles = new Vector3(0, 0, rb.velocity.y * rotateIntensity);
 
+        health = health < 0 ? 0 : health;
+
+        if (health == 0){
+            singleton.progressionRate = 0;
+            deathCanvas.SetActive(true);
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -89,6 +97,10 @@ public class FishController : MonoBehaviour
                 case "1000ptEnemy":
                     score -= 1000;
                     health -= 2;
+                    source.clip = zapSound;    
+                    source.Play();
+                    Debug.Log("damaged!");
+                    anim.SetBool("damaged", true);
                     break;
                 case "100ptEnemy":
                     score -= 100;
@@ -107,9 +119,15 @@ public class FishController : MonoBehaviour
                     source.Play();
                     singleton.progressionRate *= 0.9f;
                     Debug.Log("zapped!");
+                    anim.SetBool("zapped", true);
                     break;
             }
         //}
         
+    }
+    
+    void OnCollisionExit2D(Collision2D collision){
+        anim.SetBool("zapped", false);
+        anim.SetBool("damaged", false);
     }
 }
