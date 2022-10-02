@@ -1,3 +1,10 @@
+/*
+Written by Myopic Games
+10/07/22
+PauseGame.cs
+
+This script contains the necessary functions for pausing the game.
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

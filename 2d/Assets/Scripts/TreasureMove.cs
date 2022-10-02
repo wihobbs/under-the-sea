@@ -1,3 +1,10 @@
+/*
+Written by Myopic Games
+10/07/22
+StarfishMove.cs
+
+This script contains the necessary functions for moving the treasure.
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,10 @@
+/*
+Written by Myopic Games
+10/07/22
+UIManager.cs
+
+This script contains the necessary functions for managing the UI.
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,9 +36,11 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         scoreText.text = ((int)GameObject.Find("PlayerController").GetComponent<FishController>().score).ToString();
+        // update time
         time += Time.deltaTime;
         timeText.text = timeFormat(time);
         
+        // fill the hearts
         for (int i = 0; i < hearts.Length; i++){
             hearts[i].fillAmount = Mathf.Clamp(controller.health * 0.5f - i, 0f, 1f);
         }
@@ -41,6 +50,7 @@ public class UIManager : MonoBehaviour
         followCanvas.transform.eulerAngles = Vector3.zero;
     }
 
+    // format the time
     string timeFormat(float temp)
     {
         int m = (int)temp / 60 ;
@@ -49,6 +59,7 @@ public class UIManager : MonoBehaviour
         return string.Format("{0:00}:{1:00}:{2:000}", m, s, ms);
     }
 
+    // load the level
     public void LoadLevel(string scenename)
     {
         Debug.Log("sceneName to load: " + scenename);
