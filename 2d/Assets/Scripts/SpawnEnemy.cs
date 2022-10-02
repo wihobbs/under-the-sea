@@ -1,12 +1,22 @@
+/*
+Written by Myopic Games
+10/07/22
+SpawnEnemy.cs
+
+This script contains the necessary functions for the spawning an enemy.
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
+    // random seeds
     public int randomSeed = 100;
     public float randomSeed2 = 100;
+    // locations
     public float location = 100;
+    // timing
     public float minSpawnTime = 0.1f;
     public float maxSpawnTime = 1.5f;
 
