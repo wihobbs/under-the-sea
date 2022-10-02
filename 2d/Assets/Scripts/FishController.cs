@@ -10,6 +10,7 @@ public class FishController : MonoBehaviour
     public Animator anim;
     public bool grounded = false;
     public int health = 10;
+    int maxHealth = 10;
 
     public AudioClip treasureSound;
     public AudioClip zapSound;
@@ -79,7 +80,7 @@ public class FishController : MonoBehaviour
                     Debug.Log("treasure!");
                     break;
                 case "greenJellyfish":
-                    health = (health == 10) ? 10 : health + 1;
+                    health = (health == maxHealth) ? maxHealth : health + 1;
                     source.PlayOneShot(healthSound, 1f);
                     Destroy(collision.gameObject);
                     Debug.Log("health!");
