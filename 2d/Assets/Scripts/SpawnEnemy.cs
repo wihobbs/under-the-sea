@@ -47,7 +47,13 @@ public class SpawnEnemy : MonoBehaviour
             currSpawnTime -= Time.deltaTime;
             return;
         }
-        currSpawnTime = Random.Range(minSpawnTime / Mathf.Pow(singleton.progressionRate, 2f), maxSpawnTime / Mathf.Pow(singleton.progressionRate, 2f));
+        if (singleton.progressionRate != 0){
+            currSpawnTime = Random.Range(minSpawnTime / Mathf.Pow(singleton.progressionRate, 2f), maxSpawnTime / Mathf.Pow(singleton.progressionRate, 2f));
+        }
+        else{
+            spawnEnemies = false;
+        }
+        
         // pick a random enemy and a random y-coordinate
         //GameObject newObj;
         //Random.seed = (int)Random.Range(0, (int)Time.time);

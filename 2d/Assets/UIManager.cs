@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         scoreText.text = ((int)GameObject.Find("PlayerController").GetComponent<FishController>().score).ToString();
-        time += Time.deltaTime;
+        time += controller.alive ? Time.deltaTime : 0;
         timeText.text = timeFormat(time);
         
         for (int i = 0; i < hearts.Length; i++){

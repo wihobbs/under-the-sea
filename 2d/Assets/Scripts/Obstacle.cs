@@ -16,6 +16,7 @@ public class Obstacle : MonoBehaviour
     public bool randomRotate = true;
     public float rotateSpeedMax = 0;
     float rotateSpeed = 0;
+    public GameObject popup;
 
 
     // Start is called before the first frame update

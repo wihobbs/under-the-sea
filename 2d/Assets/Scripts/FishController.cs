@@ -14,6 +14,8 @@ public class FishController : MonoBehaviour
     public AudioClip treasureSound;
     public AudioClip zapSound;
     public AudioClip healthSound;
+    public AudioClip deathSound;
+    public AudioClip slowSound;
     AudioSource source;
 
     public float verticalSensitivity = 0.2f;
@@ -21,10 +23,11 @@ public class FishController : MonoBehaviour
 
     public float score = 0;
     public float scoreIncreaseRate = 10;
-    private float timer = 0.0f;
     public SpawnEnemy singleton;
+    public GameObject followCanvas;
     public GameObject deathCanvas;
-
+    [HideInInspector]
+    public bool alive;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,23 +38,17 @@ public class FishController : MonoBehaviour
         singleton = GameObject.Find("Singleton").GetComponent<SpawnEnemy>();
 
         health = 10;
+        alive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > 1.0f) {
-            timer = 0.0f;
-            score += 1;
-            print(score);
-        }
-
-        score += Time.deltaTime * singleton.progressionRate * scoreIncreaseRate;
+        score += alive ? Time.deltaTime * singleton.progressionRate * scoreIncreaseRate : 0;
 
         //Add Force up and down
-        rb.AddForce(new Vector2(0, Input.GetAxis("Vertical") * verticalSensitivity), ForceMode2D.Impulse);
-
+        if (alive)
+            rb.AddForce(new Vector2(0, Input.GetAxis("Vertical") * verticalSensitivity), ForceMode2D.Impulse);
         
         anim.SetBool("swimming", Input.GetAxis("Vertical") != 0);
         
@@ -60,69 +57,69 @@ public class FishController : MonoBehaviour
 
         health = health < 0 ? 0 : health;
 
-        if (health == 0){
+        if (health <= 0 && alive) {
             singleton.progressionRate = 0;
+            singleton.progressionRateAccel = 0;
             deathCanvas.SetActive(true);
+            Camera.main.gameObject.GetComponent<AudioSource>().clip = null;
+            source.PlayOneShot(deathSound, 0.7f); 
+            alive = false;
         }
-
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.GetComponent<Obstacle>().hit){
+        //if (!collision.gameObject.GetComponent<Obstacle>().hit){
             switch(collision.gameObject.tag) {
                 case "treasure":
                     score += 500;
-                    source.clip = treasureSound;    
-                    source.Play();
+                    source.PlayOneShot(treasureSound, 1f);
                     singleton.progressionRate *= 1.1f;
                     Destroy(collision.gameObject);
                     Debug.Log("treasure!");
                     break;
                 case "greenJellyfish":
                     health = (health == 10) ? 10 : health + 1;
-                    source.clip = healthSound;    
-                    source.Play();
+                    source.PlayOneShot(healthSound, 1f);
                     Destroy(collision.gameObject);
                     Debug.Log("health!");
                     break;
             }
-        }
+            if (collision.gameObject.GetComponent<Obstacle>().popup != null){
+                Instantiate(collision.gameObject.GetComponent<Obstacle>().popup, followCanvas.transform);
+            }
+        //}
         
     }
 
     void OnCollisionEnter2D(Collision2D collision){
         //if (!collision.gameObject.GetComponent<Obstacle>().hit){
             switch(collision.gameObject.tag) {
-                case "1000ptEnemy":
+                case "bigShark":
                     score -= 1000;
                     health -= 2;
-                    source.clip = zapSound;    
-                    source.Play();
+                    source.PlayOneShot(zapSound, 1f);
                     Debug.Log("damaged!");
                     anim.SetBool("damaged", true);
                     break;
-                case "100ptEnemy":
-                    score -= 100;
-                    break;
-                case "10ptEnemy":
-                    score -= 10;
-                    break;
                 case "starfish":
                     score -= 10;
+                    source.PlayOneShot(slowSound, 1f);
                     singleton.progressionRate *= 0.75f;
                     break;
                 case "pinkJellyfish":
                     score -= 500;
                     health -= 1;
-                    source.clip = zapSound;    
-                    source.Play();
+                    source.PlayOneShot(zapSound, 1f);
                     singleton.progressionRate *= 0.9f;
                     Debug.Log("zapped!");
                     anim.SetBool("zapped", true);
                     break;
             }
         //}
+        if (collision.gameObject.GetComponent<Obstacle>().popup != null){
+            Instantiate(collision.gameObject.GetComponent<Obstacle>().popup, followCanvas.transform);
+        }
         
     }
     

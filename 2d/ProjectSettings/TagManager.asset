@@ -8,12 +8,10 @@ TagManager:
   - Wall
   - enemy
   - treasure
-  - 10ptEnemy
-  - 100ptEnemy
-  - 1000ptEnemy
   - pinkJellyfish
   - greenJellyfish
   - starfish
+  - bigShark
   layers:
   - Default
   - TransparentFX
