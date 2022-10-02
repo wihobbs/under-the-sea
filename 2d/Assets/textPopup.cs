@@ -1,3 +1,10 @@
+/*
+Written by Myopic Games
+10/07/22
+textPopup.cs
+
+This script contains the necessary functions for generating a text popup.
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +27,7 @@ public class textPopup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // the text can move
         transform.position += new Vector3(0f, MoveUpSpeed * Time.deltaTime, 0f);
         time += Time.deltaTime;
         if (time > durationBeforeFade){

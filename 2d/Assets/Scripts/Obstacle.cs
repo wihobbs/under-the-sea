@@ -1,3 +1,10 @@
+/*
+Written by Myopic Games
+10/07/22
+Obstacle.cs
+
+This script contains the necessary functions for Obstacles.
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +41,7 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // move the obstacle
         transform.position -= new Vector3(speed * singleton.progressionRate * Time.deltaTime, 0, 0);
 
         if (randomRotate){

@@ -1,7 +1,15 @@
+/*
+Written by Myopic Games
+10/07/22
+ScrollingBackground.cs
+
+This script contains the necessary functions for the scrolling background.
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// an element of the background that can scroll
 [System.Serializable]
 public struct ScrollingBackgroundElement {
     public string layerName;
@@ -65,7 +73,7 @@ public class ScrollingBackground : MonoBehaviour
     {
         GameObject referenceTile = (GameObject)Instantiate(tile);
         
-
+        // make pretty color background
         for (int i = 0; i < rows; i++){
             for (int j = 0; j < columns; j++){
                 GameObject tile = GameObject.Instantiate(referenceTile, transform);
