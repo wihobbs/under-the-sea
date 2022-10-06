@@ -29,6 +29,8 @@ public class SpawnEnemy : MonoBehaviour
     SpawnEnemy singleton;
     public bool spawnEnemies = true;
 
+    UIManager ui;
+
 
 
     public float currSpawnTime;
@@ -40,6 +42,7 @@ public class SpawnEnemy : MonoBehaviour
         progressionRate = 1;
         //Random.InitState(randomSeed);
         singleton = GameObject.Find("Singleton").GetComponent<SpawnEnemy>();
+        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -51,25 +54,28 @@ public class SpawnEnemy : MonoBehaviour
 
         //Random.seed = randomSeed;
 
-        location = Random.Range(bottomLocation, topLocation) + currSpawnTime * 2.5f;
-
-        if(currSpawnTime >= 0.0f) {
-            currSpawnTime -= Time.deltaTime;
-            return;
-        }
-        if (singleton.progressionRate != 0){
-            currSpawnTime = Random.Range(minSpawnTime / Mathf.Pow(singleton.progressionRate, 2f), maxSpawnTime / Mathf.Pow(singleton.progressionRate, 2f));
-        }
-        else{
-            spawnEnemies = false;
-        }
+        
         
         // pick a random enemy and a random y-coordinate
         //GameObject newObj;
         //Random.seed = (int)Random.Range(0, (int)Time.time);
  
         //Debug.Log("location: " + location);
-        if (spawnEnemies)
+        if (spawnEnemies){
+            location = Random.Range(bottomLocation, topLocation) + currSpawnTime * 2.5f;
+
+            if(currSpawnTime >= 0.0f) {
+                currSpawnTime -= Time.deltaTime;
+                return;
+            }
+            if (singleton.progressionRate != 0 && !ui.paused){
+                currSpawnTime = Random.Range(minSpawnTime / Mathf.Pow(singleton.progressionRate, 2f), maxSpawnTime / Mathf.Pow(singleton.progressionRate, 2f));
+            }
+            else{
+                spawnEnemies = false;
+            }
+            
             Instantiate(SpawnableObjects[Random.Range(0, SpawnableObjects.Length)], new Vector2(10, location), Quaternion.identity);
+        }
     }
 }

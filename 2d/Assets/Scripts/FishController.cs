@@ -24,9 +24,9 @@ public class FishController : MonoBehaviour
 
     public float score = 0;
     public float scoreIncreaseRate = 10;
-    public SpawnEnemy singleton;
+    SpawnEnemy singleton;
     public GameObject followCanvas;
-    public GameObject deathCanvas;
+    UIManager ui;
     [HideInInspector]
     public bool alive;
     // Start is called before the first frame update
@@ -37,6 +37,7 @@ public class FishController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         source = GetComponent<AudioSource>();
         singleton = GameObject.Find("Singleton").GetComponent<SpawnEnemy>();
+        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
 
         health = 10;
         alive = true;
@@ -48,8 +49,9 @@ public class FishController : MonoBehaviour
         score += alive ? Time.deltaTime * singleton.progressionRate * scoreIncreaseRate : 0;
 
         //Add Force up and down
-        if (alive)
+        if (alive){
             rb.AddForce(new Vector2(0, Input.GetAxis("Vertical") * verticalSensitivity), ForceMode2D.Impulse);
+        }
         
         anim.SetBool("swimming", Input.GetAxis("Vertical") != 0);
         
@@ -61,7 +63,7 @@ public class FishController : MonoBehaviour
         if (health <= 0 && alive) {
             singleton.progressionRate = 0;
             singleton.progressionRateAccel = 0;
-            deathCanvas.SetActive(true);
+            ui.Death(score);
             Camera.main.gameObject.GetComponent<AudioSource>().clip = null;
             source.PlayOneShot(deathSound, 0.7f); 
             alive = false;

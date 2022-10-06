@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 
 public class UIManager : MonoBehaviour
@@ -11,6 +10,10 @@ public class UIManager : MonoBehaviour
     public Text timeText;
     float time;
     public Canvas followCanvas;
+    public GameObject pauseCanvas;
+    public GameObject deathCanvas;
+    public GameObject mainCanvas;
+    SpawnEnemy singleton;
 
     FishController controller;
 
@@ -18,18 +21,39 @@ public class UIManager : MonoBehaviour
     public float canvasFollowLerpVal = 5f;
     public Camera cam;
 
+    public bool paused;
+    private float tempSpeed;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GameObject.Find("PlayerController").GetComponent<FishController>();
-
+        paused = false;
+        singleton = GameObject.Find("Singleton").GetComponent<SpawnEnemy>();
     }
 
     // Update is called once per frame
     void Update()
     {
         scoreText.text = ((int)GameObject.Find("PlayerController").GetComponent<FishController>().score).ToString();
-        time += controller.alive ? Time.deltaTime : 0;
+        time += controller.alive && !paused ? Time.deltaTime : 0;
+
+        if (controller.alive){
+            if (Input.GetKeyDown(KeyCode.Escape)){
+                paused = paused ? false : true;
+                pauseCanvas.SetActive(paused);
+                if (paused){
+                    tempSpeed = singleton.progressionRate;
+                }
+                else{
+                    singleton.progressionRate = tempSpeed;
+                }
+            }
+        }
+        if (paused)
+            singleton.progressionRate = 0;
+        
         timeText.text = timeFormat(time);
         
         for (int i = 0; i < hearts.Length; i++){
@@ -49,9 +73,9 @@ public class UIManager : MonoBehaviour
         return string.Format("{0:00}:{1:00}:{2:000}", m, s, ms);
     }
 
-    public void LoadLevel(string scenename)
-    {
-        Debug.Log("sceneName to load: " + scenename);
-        SceneManager.LoadScene(scenename);
+    public void Death(float score){
+        deathCanvas.SetActive(true);
+        mainCanvas.SetActive(false);
+        GameObject.Find("deathPanel/Score").GetComponent<Text>().text = ((int)score).ToString();
     }
 }
