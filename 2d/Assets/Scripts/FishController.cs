@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FishController : MonoBehaviour
 {
+    public int winScore = 10000;
+
     public Rigidbody2D rb;
     public BoxCollider2D col;
     public SpriteRenderer sr;
@@ -66,6 +68,10 @@ public class FishController : MonoBehaviour
             ui.Death(score);
             Camera.main.gameObject.GetComponent<AudioSource>().clip = null;
             source.PlayOneShot(deathSound, 0.7f); 
+            // change end text based on if score >= winScore
+            string endText = (score<this.winScore) ? "You lose! You didn't get at least " +this.winScore +" points!" : "You win! You got at least " + this.winScore + " points!";
+            ui.endScore(endText);
+
             alive = false;
         }
     }

@@ -78,4 +78,8 @@ public class UIManager : MonoBehaviour
         mainCanvas.SetActive(false);
         GameObject.Find("deathPanel/Score").GetComponent<Text>().text = ((int)score).ToString();
     }
+    
+    public void endScore(string text){
+        GameObject.Find("deathPanel/youdied").GetComponent<Text>().text = text;
+    }
 }
