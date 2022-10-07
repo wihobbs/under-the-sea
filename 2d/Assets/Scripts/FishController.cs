@@ -51,7 +51,7 @@ public class FishController : MonoBehaviour
         score += alive ? Time.deltaTime * singleton.progressionRate * scoreIncreaseRate : 0;
 
         //Add Force up and down
-        if (alive){
+        if (alive && !ui.paused){
             rb.AddForce(new Vector2(0, Input.GetAxis("Vertical") * verticalSensitivity), ForceMode2D.Impulse);
         }
         

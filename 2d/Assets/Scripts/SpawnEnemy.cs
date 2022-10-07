@@ -55,7 +55,7 @@ public class SpawnEnemy : MonoBehaviour
         //Random.seed = randomSeed;
 
         
-        
+        spawnEnemies = !ui.paused;
         // pick a random enemy and a random y-coordinate
         //GameObject newObj;
         //Random.seed = (int)Random.Range(0, (int)Time.time);
@@ -74,7 +74,9 @@ public class SpawnEnemy : MonoBehaviour
             else{
                 spawnEnemies = false;
             }
-            
+
+            currSpawnTime = currSpawnTime < 0 ? 0.01F : currSpawnTime;
+
             Instantiate(SpawnableObjects[Random.Range(0, SpawnableObjects.Length)], new Vector2(10, location), Quaternion.identity);
         }
     }
